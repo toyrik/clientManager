@@ -12,13 +12,7 @@
     <div class="alert alert-primary" role="alert"><?php echo $results['statusMessage'] ?></div>
 <?php endif; ?>
 
-<!--<?php
-    echo "<pre>";
-    print_r($data);
-    print_r($_POST);
-    echo "<pre>";
-?>!-->
-<table class="table table-striped">
+<table id="myTable" class="table table-striped tablesorter">
     <thead>
         <tr class="thead-light">
             <th scope="col">Имя</th>
