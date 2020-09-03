@@ -1,0 +1,16 @@
+{
+    "name": "toyrik/customer-manager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "toyrik",
+            "email": "toyrik@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
