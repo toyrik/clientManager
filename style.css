@@ -1,0 +1,21 @@
+.container {
+    width: 960px;
+    border: 1px #00a0b0 solid;
+    margin: 20px auto;
+    padding: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.main-navbar {
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-size: 10rem;
+}
+.user-nav {
+    color: rgba(255,255,255,.5);
+    margin-left: auto;
+}
