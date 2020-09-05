@@ -2,19 +2,21 @@
 
 namespace app\controllers;
 
-class SiteController
+use app\core\Controller;
+
+class SiteController extends Controller
 {
     public function home()
     {
         $params = [
             'name' => 'losyash',
         ];
-        return \app\core\Application::$app->router->renderVew('home', $params);
+        return $this->render('home', $params);
     }
     
     public function contact()
     {
-        return \app\core\Application::$app->router->renderVew('contact');
+        return $this->render('contact');
     }
     
     public function handleContact()
