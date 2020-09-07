@@ -33,7 +33,7 @@ class AuthController extends Controller
             ]);
         }
         
-        $this->setLayout('auth');
+        $this->setLayout('main');
         return $this->render('register', [
                 'model' => $user
             ]);
