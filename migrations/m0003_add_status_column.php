@@ -12,7 +12,8 @@
  */
 class m0003_add_status_column
 {
-     public function up()
+
+    public function up()
     {
         $db = \app\core\Application::$app->db;
         $db->pdo->exec("ALTER TABLE users ADD COLUMN status TINYINT NOT NULL");

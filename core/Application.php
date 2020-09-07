@@ -1,6 +1,9 @@
 <?php
-
 namespace app\core;
+
+use app\core\db\Database;
+use app\core\UserModel;
+use Exception;
 
 /**
  * Description of Application
@@ -9,8 +12,8 @@ namespace app\core;
  */
 class Application
 {
+
     public static string $ROOT_DIR;
-    
     public string $layout = 'main';
     public string $userClass;
     public Router $router;
@@ -18,12 +21,10 @@ class Application
     public Response $response;
     public Session $session;
     public Database $db;
-    public ?DbModel $user;
+    public ?UserModel $user;
     public View $view;
-    
     public static Application $app;
     public ?Controller $controller = null;
-
 
     public function __construct($rootPath, array $config)
     {
@@ -35,9 +36,9 @@ class Application
         $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->view = new View();
-        
+
         $this->db = new Database($config['db']);
-        
+
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
@@ -46,30 +47,30 @@ class Application
             $this->user = null;
         }
     }
-    
+
     public function run()
     {
-        try{
+        try {
             echo $this->router->resolve();
-        } catch(\Exception $e) {
+        } catch (Exception $e) {
             $this->response->setStatusCode($e->getCode());
             echo $this->view->renderVew('_error', [
                 'exception' => $e
             ]);
-        }        
+        }
     }
-    
-    public function getController(): \app\core\Controller
+
+    public function getController(): Controller
     {
         return $this->controller;
     }
-    
-    public function setController(\app\core\Controller $controller): void
+
+    public function setController(Controller $controller): void
     {
         $this->controller = $controller;
     }
-    
-    public function login(DbModel $user)
+
+    public function login(UserModel $user)
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey();
@@ -77,13 +78,13 @@ class Application
         $this->session->set('user', $primaryValue);
         return true;
     }
-    
+
     public function logout()
     {
         $this->user = null;
         $this->session->remove('user');
     }
-    
+
     public static function isGuest()
     {
         return !self::$app->user;

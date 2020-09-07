@@ -31,17 +31,17 @@ abstract class Model
     }
 
     abstract public function rules(): array;
-    
+
     public function labels(): array
     {
         return [];
     }
-    
+
     public function getLabel($attribute)
     {
         return $this->labels()[$attribute] ?? $attribute;
     }
-    
+
     public array $errors = [];
 
     public function validate()
@@ -77,17 +77,16 @@ abstract class Model
                     $statement->bindValue(":attr", $value);
                     $statement->execute();
                     $record = $statement->fetchObject();
-                    if ($record){
+                    if ($record) {
                         $this->addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $this->getLabel($attribute)]);
                     }
                 }
-                
             }
         }
-        
+
         return empty($this->errors);
     }
-    
+
     private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         $message = $this->errorMesages()[$rule] ?? '';
@@ -96,12 +95,12 @@ abstract class Model
         }
         $this->errors[$attribute][] = $message;
     }
-    
+
     public function addError(string $attribute, string $message)
     {
         $this->errors[$attribute][] = $message;
     }
-    
+
     public function errorMesages()
     {
         return [
@@ -113,12 +112,12 @@ abstract class Model
             self::RULE_UNIQUE => 'Record with this {field} already exists',
         ];
     }
-    
+
     public function hasError($attribute)
     {
         return $this->errors[$attribute] ?? false;
     }
-    
+
     public function getFirstError($attribute)
     {
         return $this->errors[$attribute][0] ?? false;

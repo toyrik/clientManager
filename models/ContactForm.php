@@ -1,16 +1,15 @@
 <?php
-
 namespace app\models;
 
 use app\core\Model;
 
-
 class ContactForm extends Model
 {
+
     public string $subject = '';
     public string $email = '';
     public string $body = '';
-    
+
     public function rules(): array
     {
         return [
@@ -19,7 +18,7 @@ class ContactForm extends Model
             'body' => [self::RULE_REQUIRED]
         ];
     }
-    
+
     public function labels(): array
     {
         return [
@@ -28,7 +27,7 @@ class ContactForm extends Model
             'body' => 'Body'
         ];
     }
-    
+
     public function send()
     {
         return true;

@@ -1,10 +1,13 @@
 <?php
+namespace app\core\db;
 
-namespace app\core;
-
+use app\core\Application;
+use app\core\Model;
+use PDOStatement;
 
 abstract class DbModel extends Model
 {
+
     abstract public static function tableName(): string;
 
     abstract public function attributes(): array;
@@ -27,7 +30,7 @@ abstract class DbModel extends Model
         $statement->execute();
         return true;
     }
-    
+
     public static function findOne($where)
     {
         $tableName = static::tableName();
@@ -41,7 +44,7 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
 
-    public function prepare($sql): \PDOStatement
+    public function prepare($sql): PDOStatement
     {
         return Application::$app->db->pdo->prepare($sql);
     }

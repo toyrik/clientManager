@@ -2,6 +2,7 @@
 
 class m0001_initial
 {
+
     public function up()
     {
         $db = \app\core\Application::$app->db;
@@ -14,7 +15,7 @@ class m0001_initial
             )  ENGINE=INNODB;";
         $db->pdo->exec($SQL);
     }
-    
+
     public function down()
     {
         $db = \app\core\Application::$app->db;

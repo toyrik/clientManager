@@ -1,5 +1,4 @@
-<?php
-?>
+<?php ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -13,9 +12,9 @@
         <title>Hello, world!</title>
     </head>
     <body>
-        
+
         <div class="container">
-        {{content}}
+            {{content}}
         </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

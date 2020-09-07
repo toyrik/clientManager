@@ -1,15 +1,14 @@
 <?php
-
 namespace app\models;
 
 use app\core\Model;
 
-
 class LoginForm extends Model
 {
+
     public string $email = '';
-    public string $password = '';    
-    
+    public string $password = '';
+
     public function rules(): array
     {
         return [
@@ -17,7 +16,7 @@ class LoginForm extends Model
             'password' => [self::RULE_REQUIRED]
         ];
     }
-    
+
     public function labels(): array
     {
         return [
@@ -25,10 +24,10 @@ class LoginForm extends Model
             'password' => 'Password'
         ];
     }
-    
+
     public function login()
     {
-        $user = User::findOne(['email'=> $this->email]);
+        $user = User::findOne(['email' => $this->email]);
         if (!$user) {
             $this->addError('email', 'User does not exist with this email');
             return false;
@@ -37,7 +36,7 @@ class LoginForm extends Model
             $this->addError('password', 'Password is incorrect');
             return false;
         }
-        
+
         return \app\core\Application::$app->login($user);
     }
 }
