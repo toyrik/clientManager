@@ -12,9 +12,15 @@ class SiteController extends Controller
 
     public function home()
     {
+        if(Application::$app->user) {
         $params = [
-            'name' => 'losyash',
+            'name' => Application::$app->user->getDisplayName(),
         ];
+        } else {
+            $params = [
+            'name' => 'guest!',
+        ];
+        }
         return $this->render('home', $params);
     }
 
