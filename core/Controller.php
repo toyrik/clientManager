@@ -27,7 +27,7 @@ class Controller
     
     public function render($view, $params = [])
     {
-        return Application::$app->router->renderVew($view, $params);
+        return Application::$app->view->renderVew($view, $params);
     }
     
     public function setLayout($layout)
