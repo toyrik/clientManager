@@ -1,7 +1,7 @@
 <?php
 
-use app\controllers\AdminController;
 use app\controllers\AuthController;
+use app\controllers\CustomerController;
 use app\controllers\SiteController;
 use app\core\Application;
 use app\models\User;
@@ -26,6 +26,9 @@ $app->router->get('/', [SiteController::class, 'home']);
 
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->post('/contact', [SiteController::class, 'contact']);
+
+$app->router->get('/add-customer', [CustomerController::class, 'addСustomer']);
+$app->router->post('/add-customer', [CustomerController::class, 'addСustomer']);
 
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);

@@ -13,9 +13,9 @@ namespace app\models;
  */
 class Customer extends \app\core\db\DbModel
 {
-    public string $name;
-    public string $email;
-    public int $phone;
+    public string $name = '';
+    public string $email = '';
+    public int $phone = 0;
     
     public function attributes(): array
     {

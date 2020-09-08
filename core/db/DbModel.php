@@ -19,8 +19,8 @@ abstract class DbModel extends Model
     
     public function getList($numRows=1000000)
     {
-        $tableName = static::tableName();
-        $statement = self::prepare("SELECT SQL_CALC_FOUND_ROWS * FROM $tableName LIMIT $numRows");
+        $tableName = $this->tableName();
+        $statement = $this->prepare("SELECT * FROM $tableName LIMIT $numRows");
         
         $statement->execute();
         return $statement->fetchAll(2);
@@ -51,6 +51,16 @@ abstract class DbModel extends Model
         }
         $statement->execute();
         return $statement->fetchObject(static::class);
+    }
+    
+    public function delete()
+    {
+        $tableName = $this->tableName();
+        $statement = $this->prepare("DELETE FROM $tableName WHERE   id = :id LIMIT 1");
+        $statement->bindValue(":id", $this->id);
+        
+        $statement->execute();
+        return true;
     }
 
     public function prepare($sql): PDOStatement

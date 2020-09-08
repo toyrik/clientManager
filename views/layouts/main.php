@@ -30,6 +30,11 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
+                    <?php if (!Application::isGuest()) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add-customer">Добавить клиента</a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
                 <?php if (Application::isGuest()) : ?>
                     <ul class="navbar-nav ml-auto">

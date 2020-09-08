@@ -17,18 +17,18 @@ $this->title = 'Home';
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($customers as $user) : ?>
+        <?php foreach ($customers as $customer) : ?>
 
         <tr>
 
             <td>
-                <?php echo $user['name'] ?>
+                <?php echo $customer['name'] ?>
             </td>
             <td>
-                <?= $user['phone'] ?>
+                <?= $customer['phone'] ?>
             </td>
             <td>
-                <?= $user['email'] ?>
+                <?= $customer['email'] ?>
             </td>
         </tr>
 
