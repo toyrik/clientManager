@@ -25,7 +25,7 @@ use app\core\Application;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/">Главная</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
@@ -34,22 +34,22 @@ use app\core\Application;
                 <?php if (Application::isGuest()) : ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link" href="/login">Войти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">Register</a>
+                            <a class="nav-link" href="/register">Регистрация</a>
                         </li>
                     </ul>
                 <?php else: ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="/profile">
-                                Profile
+                                Профиль
                             </a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/logout">
-                                Welcome <?php echo Application::$app->user->getDisplayName() ?> (Logout)
+                                 <?php echo Application::$app->user->getDisplayName() ?> (Logout)
                             </a>
                         </li>
                     </ul>
@@ -69,6 +69,8 @@ use app\core\Application;
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="/js/jquery.tablesorter.min.js"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>
 

@@ -7,3 +7,32 @@ $this->title = 'Home';
 ?>
 <h1>Home</h1>
 <h3>Welcome <?= $name; ?></h3>
+
+<table id="myTable" class="table table-striped tablesorter">
+    <thead>
+        <tr class="thead-light">
+            <th scope="col">Имя</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($customers as $user) : ?>
+
+        <tr>
+
+            <td>
+                <?php echo $user['name'] ?>
+            </td>
+            <td>
+                <?= $user['phone'] ?>
+            </td>
+            <td>
+                <?= $user['email'] ?>
+            </td>
+        </tr>
+
+        <?php endforeach; ?>
+    </tbody>
+
+</table>
