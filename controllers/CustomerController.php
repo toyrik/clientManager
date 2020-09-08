@@ -23,8 +23,14 @@ class CustomerController extends Controller
        return $this->render('add-customer', [
                 'model' => $customer
         ]);
-        
-        
+    }
+    
+    public function delete(Request $request, Response $response)
+    {
+        $customer = new Customer;
+        $customer->delete($request->getBody());
+        Application::$app->session->setFlash('success', 'Запись удалена');
+                return $response->redirect('/');
         
     }
 }

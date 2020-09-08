@@ -53,11 +53,15 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
     
-    public function delete()
+    public function delete($where)
     {
         $tableName = $this->tableName();
-        $statement = $this->prepare("DELETE FROM $tableName WHERE   id = :id LIMIT 1");
-        $statement->bindValue(":id", $this->id);
+        $attributes = array_keys($where);
+        $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $statement = $this->prepare("DELETE FROM $tableName WHERE $sql LIMIT 1");
+        foreach ($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
         
         $statement->execute();
         return true;

@@ -5,6 +5,7 @@ use app\controllers\CustomerController;
 use app\controllers\SiteController;
 use app\core\Application;
 use app\models\User;
+use app\models\Customer;
 use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -29,6 +30,7 @@ $app->router->post('/contact', [SiteController::class, 'contact']);
 
 $app->router->get('/add-customer', [CustomerController::class, 'addСustomer']);
 $app->router->post('/add-customer', [CustomerController::class, 'addСustomer']);
+$app->router->get('/delete-customer', [CustomerController::class, 'delete']);
 
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);

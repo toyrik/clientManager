@@ -30,6 +30,9 @@ $this->title = 'Home';
             <td>
                 <?= $customer['email'] ?>
             </td>
+            <td>
+                <a href="/delete-customer?id=<?= $customer['id'] ?>">Удалить</a>
+            </td>
         </tr>
 
         <?php endforeach; ?>
