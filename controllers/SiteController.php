@@ -6,21 +6,25 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\models\ContactForm;
+use app\models\Customer;
 
 class SiteController extends Controller
 {
 
     public function home()
     {
-        if(Application::$app->user) {
-        $params = [
-            'name' => Application::$app->user->getDisplayName(),
-        ];
+        $customer = new Customer();
+        
+        if(!Application::isGuest()) {
+            $params = [
+                'name' => Application::$app->user->getDisplayName(),
+                ];
         } else {
             $params = [
             'name' => 'guest!',
         ];
-        }
+        } 
+        $params['customers'] = $customer->getList();
         return $this->render('home', $params);
     }
 

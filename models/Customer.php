@@ -45,6 +45,6 @@ class Customer extends \app\core\db\DbModel
 
     public static function tableName(): string
     {
-        return customers;
+        return 'customers';
     }
 }
