@@ -16,6 +16,15 @@ abstract class DbModel extends Model
     {
         return 'id';
     }
+    
+    public function getList($numRows=1000000)
+    {
+        $tableName = static::tableName();
+        $statement = self::prepare("SELECT SQL_CALC_FOUND_ROWS * FROM $tableName LIMIT $numRows");
+        
+        $statement->execute();
+        return $statement->fetchAll(2);
+    }
 
     public function save()
     {
